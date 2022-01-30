@@ -26,7 +26,7 @@ public class CarDAO {
     }
 
     public void save(Car car) {
-        jdbcTemplate.update("INSERT INTO car VALUES(1, ?, ?, ?, ?, ?)", car.getNumber(), car.getBrand(),
+        jdbcTemplate.update("INSERT INTO car (number, brand, model, color, year) VALUES(?, ?, ?, ?, ?)", car.getNumber(), car.getBrand(),
                 car.getModel(), car.getColor(), car.getYearOfManufacture());
     }
 
