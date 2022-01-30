@@ -5,5 +5,6 @@ RUN mvn -f /home/app/pom.xml clean package
 
 FROM tomcat:9.0-jre11-openjdk-slim
 COPY --from=build /home/app/target/TestEmbedika.war /usr/local/tomcat/webapps/TestEmbedika.war
+COPY tomcat-conf.xml /usr/local/tomcat/conf/server.xml
 EXPOSE 8080
 CMD ["catalina.sh", "run"]

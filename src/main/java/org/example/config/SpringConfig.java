@@ -37,6 +37,7 @@ public class SpringConfig implements WebMvcConfigurer {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setCacheable(true);
         return templateResolver;
     }
 
@@ -55,6 +56,7 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setCharacterEncoding("UTF-8");
         resolver.setForceContentType(true);
         resolver.setContentType("text/html; charset=UTF-8");
+        resolver.setOrder(1);
         registry.viewResolver(resolver);
     }
 
@@ -74,4 +76,6 @@ public class SpringConfig implements WebMvcConfigurer {
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
+
+
 }

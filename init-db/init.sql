@@ -10,3 +10,5 @@ CREATE TABLE car
 
 ALTER TABLE car
     OWNER TO postgres;
+
+INSERT INTO car (number, brand, model, color, year) VALUES('r999rr99', 'LADA', 'Нива', 'red', 2000);

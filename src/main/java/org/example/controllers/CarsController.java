@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/cars")
+@RequestMapping(value = "/cars", produces = "text/html; charset=UTF-8")
 public class CarsController {
 
     private final CarDAO carDAO;
