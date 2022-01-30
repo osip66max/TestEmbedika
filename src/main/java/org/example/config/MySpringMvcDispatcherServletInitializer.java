@@ -1,8 +1,10 @@
 package org.example.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
@@ -26,6 +28,14 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
     public void onStartup(ServletContext servletContext) throws ServletException {
             super.onStartup(servletContext);
             registerHiddenFieldFilter(servletContext);
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        return new Filter[] { filter };
     }
 
     private void registerHiddenFieldFilter(ServletContext servletContext) {
