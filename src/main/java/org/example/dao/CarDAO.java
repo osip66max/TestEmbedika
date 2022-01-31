@@ -37,4 +37,11 @@ public class CarDAO {
     public int getCount() {
         return jdbcTemplate.queryForObject("SELECT count(*) FROM car", Integer.class);
     }
+
+    public List<Car> sortIndex(int column) {
+        if (column == 2)
+            return jdbcTemplate.query("SELECT * FROM car ORDER BY 2", new CarMapper());
+        else
+            return jdbcTemplate.query("SELECT * FROM car ORDER BY 3", new CarMapper());
+    }
 }

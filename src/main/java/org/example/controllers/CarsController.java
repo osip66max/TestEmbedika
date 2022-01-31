@@ -29,6 +29,13 @@ public class CarsController {
         return "cars/index";
     }
 
+    @GetMapping("/sort/{column}")
+    public String sort(@PathVariable("column") int column, Model model) {
+        model.addAttribute("cars", carDAO.sortIndex(column));
+        model.addAttribute("count", carDAO.getCount());
+        return "cars/index";
+    }
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         //We will get one car by id from the DAO and pass it to the view for display

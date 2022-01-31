@@ -10,6 +10,19 @@
 </head>
 <body class="p-3 mb-2 bg-light text-dark">
 
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort by
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" th:href="@{/cars/sort/2}">Number</a></li>
+        <li><a class="dropdown-item" th:href="@{/cars/sort/3}">Brand</a></li>
+    </ul>
+</div>
+
+<br/>
+<br/>
+
 <div th:each="car : ${cars}">
     <a th:href="@{/cars/{id}(id=${car.getId()})}"
        th:text="${car.getNumber() + ' ' + car.getBrand + ' ' + car.getModel}"
