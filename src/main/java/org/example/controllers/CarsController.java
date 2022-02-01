@@ -50,8 +50,14 @@ public class CarsController {
 
     @PostMapping()
     public String create(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "cars/new";
+        }
+
+        if (carDAO.getCount(car) > 0) {
+            car.setNumber("This number already exists");
+            return "cars/new";
+        }
 
         carDAO.save(car);
         return "redirect:/cars";

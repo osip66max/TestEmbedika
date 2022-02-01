@@ -38,6 +38,10 @@ public class CarDAO {
         return jdbcTemplate.queryForObject("SELECT count(*) FROM car", Integer.class);
     }
 
+    public int getCount(Car car) {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM car WHERE number=?", Integer.class, car.getNumber());
+    }
+
     public List<Car> sortIndex(int column) {
         if (column == 2)
             return jdbcTemplate.query("SELECT * FROM car ORDER BY 2", new CarMapper());
