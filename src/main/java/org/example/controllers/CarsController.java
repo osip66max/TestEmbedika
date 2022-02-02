@@ -9,9 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+
 @Controller
 @RequestMapping(value = "/cars", produces = "text/html; charset=UTF-8")
 public class CarsController {
+
+    SimpleDateFormat formatter = new SimpleDateFormat("MMM-dd-yyyy");
 
     private final CarDAO carDAO;
 
@@ -26,6 +30,8 @@ public class CarsController {
         //We will get all the cars from the DAO and pass them to the view for display
         model.addAttribute("cars", carDAO.index());
         model.addAttribute("count", carDAO.getCount());
+        model.addAttribute("first", formatter.format(carDAO.firstRow()));
+        model.addAttribute("last", formatter.format(carDAO.lastRow()));
         return "cars/index";
     }
 
@@ -33,6 +39,8 @@ public class CarsController {
     public String sort(@PathVariable("column") int column, Model model) {
         model.addAttribute("cars", carDAO.sortIndex(column));
         model.addAttribute("count", carDAO.getCount());
+        model.addAttribute("first", formatter.format(carDAO.firstRow()));
+        model.addAttribute("last", formatter.format(carDAO.lastRow()));
         return "cars/index";
     }
 

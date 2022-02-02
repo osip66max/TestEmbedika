@@ -17,6 +17,7 @@ public class CarMapper implements RowMapper<Car> {
         car.setModel(resultSet.getString("model"));
         car.setColor(resultSet.getString("color"));
         car.setYearOfManufacture(resultSet.getInt("year"));
+        car.setDate(resultSet.getDate("date"));
 
         return car;
     }

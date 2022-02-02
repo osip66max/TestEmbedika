@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -26,7 +27,7 @@ public class CarDAO {
     }
 
     public void save(Car car) {
-        jdbcTemplate.update("INSERT INTO car (number, brand, model, color, year) VALUES(?, ?, ?, ?, ?)", car.getNumber(), car.getBrand(),
+        jdbcTemplate.update("INSERT INTO car (number, brand, model, color, year, date) VALUES(?, ?, ?, ?, ?, 'now')", car.getNumber(), car.getBrand(),
                 car.getModel(), car.getColor(), car.getYearOfManufacture());
     }
 
@@ -40,6 +41,14 @@ public class CarDAO {
 
     public int getCount(Car car) {
         return jdbcTemplate.queryForObject("SELECT count(*) FROM car WHERE number=?", Integer.class, car.getNumber());
+    }
+
+    public Date firstRow() {
+        return jdbcTemplate.queryForObject("SELECT min(date) FROM car", Date.class);
+    }
+
+    public Date lastRow() {
+        return jdbcTemplate.queryForObject("SELECT max(date) FROM car", Date.class);
     }
 
     public List<Car> sortIndex(int column) {

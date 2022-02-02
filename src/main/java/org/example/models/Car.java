@@ -4,6 +4,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 public class Car {
     private int id;
@@ -25,17 +26,20 @@ public class Car {
     @Max(value = 2022, message = "Year of manufacture should not be greater than 2022")
     private int yearOfManufacture;
 
+    private Date date;
+
     public Car() {
 
     }
 
-    public Car(int id, String number, String brand, String model, String color, int yearOfManufacture) {
+    public Car(int id, String number, String brand, String model, String color, int yearOfManufacture, Date date) {
         this.id = id;
         this.number = number;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.yearOfManufacture = yearOfManufacture;
+        this.date = date;
     }
 
     public int getId() {
@@ -84,5 +88,13 @@ public class Car {
 
     public void setYearOfManufacture(int yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

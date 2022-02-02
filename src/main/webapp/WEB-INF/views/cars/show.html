@@ -12,6 +12,7 @@
 <p th:text="${car.getNumber() + ' ' + car.getBrand + ' ' + car.getModel}">VALUE</p>
 <p th:text="${'Color: ' + car.getColor()}">VALUE</p>
 <p th:text="${'Year of manufacture: ' + car.getYearOfManufacture()}">VALUE</p>
+<p th:text="${'Date added: ' + car.getDate()}">VALUE</p>
 <p th:text="${car.getId()}">VALUE</p>
 
 <form th:method="DELETE" th:action="@{/cars/{id}(id=${car.getId()})}">

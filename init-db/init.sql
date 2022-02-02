@@ -5,10 +5,12 @@ CREATE TABLE car
     brand  VARCHAR,
     model  VARCHAR,
     color  VARCHAR,
-    year   VARCHAR
+    year   VARCHAR,
+    date   DATE
 );
 
 ALTER TABLE car
     OWNER TO postgres;
 
-INSERT INTO car (number, brand, model, color, year) VALUES('r999rr99', 'LADA', 'Нива', 'red', 2000);
+INSERT INTO car (number, brand, model, color, year, date) VALUES('r999rr99', 'LADA', 'Нива', 'red', 2000, 'now');
+INSERT INTO car (number, brand, model, color, year, date) VALUES('r999rr96', 'Skoda', 'Octavia', 'white', 2015, '2022-01-01');
